@@ -27,45 +27,26 @@ constant OP_WIDTH    : integer := 8;
 
 --OPRATION--CODES--
 
---type T_OP is (opPass, opAdd, opSubAB, opSubBA, opShl, opShr, opComp, opXor, opAnd, opNand, opOr, opNor);
-    --Egyszer?bb használni, mindig látom, hogy melyik m?veletet választottam ki
+type t_op is (OP_PASS, OP_ADD, OP_SUB, OP_SHL, OP_SHR, OP_COMP, OP_XOR, OP_AND, OP_NAND, OP_OR, OP_NOR);
 
-constant OP_PASS    : integer := 0;
-constant OP_ADD     : integer := 1;
-constant OP_SUB     : integer := 2;
+--constant OP_PASS    : integer := 0;
+--constant OP_ADD     : integer := 1;
+--constant OP_SUB     : integer := 2;
 
-constant OP_SHL     : integer := 3;
-constant OP_SHR     : integer := 4;
+--constant OP_SHL     : integer := 3;
+--constant OP_SHR     : integer := 4;
 
-constant OP_COMP    : integer := 5;
+--constant OP_COMP    : integer := 5;
 
-constant OP_XOR     : integer := 6;
-constant OP_AND     : integer := 7;
-constant OP_NAND    : integer := 8;
-constant OP_OR      : integer := 9;
-constant OP_NOR     : integer := 10;
+--constant OP_XOR     : integer := 6;
+--constant OP_AND     : integer := 7;
+--constant OP_NAND    : integer := 8;
+--constant OP_OR      : integer := 9;
+--constant OP_NOR     : integer := 10;
 
 --OPRATION--CODES--
 
 --TYPE--DECLARATIONS--
-
---type t_data_bus is record
---    en : std_logic;
---    data : std_logic_vector((DATA_WIDTH - 1) downto 0);
---end record;
---
---type t_operation_bus is record
---    en : std_logic;
---    op : std_logic_vector((OP_WIDTH - 1) downto 0);
---end record;
---
---type t_flag_bus is record
---    en : std_logic;
---    carry : std_logic;
---    ovf : std_logic;
---    zero : std_logic;
---    negative : std_logic;
---end record;
 
 type t_flag_bus is record
     carry : std_logic;

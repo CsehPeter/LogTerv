@@ -5,7 +5,6 @@
 -- Create Date: 20.02.2017 23:18:47
 -- Design Name: alu
 -- Module Name: alu_sim - Behavioral
--- Project Name: 
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
@@ -35,14 +34,14 @@ architecture behavioral of alu_sim is
     
     signal tb_a       : std_logic_vector((DATA_WIDTH - 1) downto 0) := (others => '0');
     signal tb_b       : std_logic_vector((DATA_WIDTH - 1) downto 0) := (others => '0');
-    signal tb_op      : std_logic_vector((OP_WIDTH - 1) downto 0) := (others => '0');
+    signal tb_op      : t_op := OP_PASS; --std_logic_vector((OP_WIDTH - 1) downto 0) := (others => '0');
     
     signal tb_i_flag  : t_flag_bus := (others => '0');
     
     signal tb_y       : std_logic_vector((DATA_WIDTH - 1) downto 0) := (others => '0');
-    signal tb_o_flag  : t_flag_bus := (others => '0');
+    signal tb_o_flag  : t_flag_bus := (others => '0');  
     
-    signal tb_cnt : integer range 0 to 10 := 0;    
+    signal tb_cnt     : integer range 0 to 2 := 0;
 
 begin
 
@@ -68,18 +67,29 @@ begin
     begin
             tb_clk <= '1'; wait for 5 ns;
             tb_clk <= '0'; wait for 5 ns;
-        end process proc_clk;
+    end process proc_clk;
         
     --Cycle through the operations
     proc_op : process
     begin
-        if(tb_cnt > 10) then
-            tb_cnt <= 0;
-        else
-            tb_op <= std_logic_vector(to_unsigned(tb_cnt, OP_WIDTH));
-            tb_cnt <= tb_cnt + 1;
+        if(tb_cnt > 2) then
+                tb_cnt <= 0;
+            else
+                tb_op <= OP_PASS;   wait for 50 ns;
+                tb_op <= OP_ADD;    wait for 50 ns;
+                tb_op <= OP_SUB;    wait for 50 ns;
+                tb_op <= OP_SHL;    wait for 50 ns;
+                tb_op <= OP_SHR;    wait for 50 ns;
+                tb_op <= OP_COMP;   wait for 50 ns;
+                tb_op <= OP_XOR;    wait for 50 ns;
+                tb_op <= OP_AND;    wait for 50 ns;
+                tb_op <= OP_NAND;   wait for 50 ns;
+                tb_op <= OP_OR;     wait for 50 ns;
+                tb_op <= OP_NOR;    wait for 50 ns;
+                
+                tb_cnt <= tb_cnt + 1;
         end if;
-        wait for 50 ns;
+            
     end process proc_op;
         
     proc_stim : process
@@ -87,8 +97,8 @@ begin
         
         tb_rst <= '1' after 00 ns, '0' after 10 ns;
         
-        tb_a <= x"AA" after 00 ns;  --Add without input or output carry
-        tb_b <= x"55" after 00 ns;
+        tb_a <= x"AA" after 00 ns, x"66" after 550 ns, x"23" after 1100 ns;
+        tb_b <= x"45" after 00 ns, x"66" after 550 ns, x"41" after 1100 ns;
         
         
         
