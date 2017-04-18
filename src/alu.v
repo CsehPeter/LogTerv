@@ -12,8 +12,9 @@ module alu
     (
         input clk,
         
-        input [7:0] a,
-        input [7:0] b,
+        input [2:0] a_addr,
+        input [2:0] b_addr,
+        input [7:0] const,
         input [2:0] op,
         input cin,
         
@@ -24,8 +25,15 @@ module alu
         output reg neg
     );
     
-//PASS
-wire [7:0] pass = a;
+//Register array
+reg [7:0] regs[7:0];
+
+//A and B operands
+wire [7:0] a = regs[a_addr];
+wire [7:0] b = regs[b_addr];
+    
+//PASS / MOV
+wire [7:0] pass = const;
 
 //AND
 wire [7:0] y_and = a & b;
@@ -65,7 +73,7 @@ begin
         3'b010 : r_y <= {1'b0, y_or};
         3'b011 : r_y <= {1'b0, y_xor};
         3'b100 : r_y <= y_arith;
-        3'b101 : r_y <= y_arith;
+        3'b101 : r_y <= {~y_arith[8], y_arith[7:0]};
         3'b110 : r_y <= {y_arith[8], {8{1'b0}} };
         3'b111 : r_y <= y_arith;
      endcase
@@ -95,6 +103,11 @@ begin
      
 end
 
+//Write the result back to a_addr
+always @ (posedge clk)
+    regs[a_addr] <= r_y[7:0];
+    
+//Output regs
 always @ (posedge clk)
 begin
     y <= r_y;
@@ -104,5 +117,4 @@ begin
     neg <= r_neg;
 end
 
-    
 endmodule
