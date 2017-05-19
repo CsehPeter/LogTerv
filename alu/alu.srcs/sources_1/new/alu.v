@@ -92,9 +92,9 @@ begin
         OR  : r_y <= {1'b0, y_or};
         XOR : r_y <= {1'b0, y_xor};
         RRC : r_y <= y_rrc;
-        CMP : r_y <= {~y_arith[8], y_arith[7:0]}; //~carry
+        CMP : r_y <= {y_arith[8], a}; //result not changed
         ADD : r_y <= y_arith;
-        SUB : r_y <= {y_arith[8], a};   //result not changed
+        SUB : r_y <= {~y_arith[8], y_arith[7:0]};  //~carry 
      endcase
      
      //COUT

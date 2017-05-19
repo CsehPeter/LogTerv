@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-| Date         : Sat May 06 01:51:34 2017
+| Date         : Thu May 18 22:56:28 2017
 | Host         : DESKTOP-P4DAKPQ running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file alu_control_sets_placed.rpt
 | Design       : alu
@@ -33,7 +33,7 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              11 |            6 |
+| No           | No                    | No                     |              11 |            9 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               1 |            1 |
 | Yes          | No                    | No                     |               0 |            0 |
@@ -49,7 +49,7 @@ Table of Contents
 |  Clock Signal  | Enable Signal | Set/Reset Signal | Slice Load Count | Bel Load Count |
 +----------------+---------------+------------------+------------------+----------------+
 |  clk_IBUF_BUFG |               | r_neg            |                1 |              1 |
-|  clk_IBUF_BUFG |               |                  |                8 |             27 |
+|  clk_IBUF_BUFG |               |                  |               11 |             27 |
 +----------------+---------------+------------------+------------------+----------------+
 
 

@@ -78,33 +78,48 @@ initial #100 a_addr = 4;
 initial #120 a_addr = 5;
 initial #140 a_addr = 6;
 initial #160 a_addr = 7;
-initial #180 a_addr = 0;
 
-reg init;
-initial #10 init = 0;
-initial #200 init = 1;
+//Load test values
+initial #180 a_addr = 1;
+initial #180 const = 8'h2E;
+initial #200 const = 8'hAA;
+initial #200 a_addr = 0;
+initial #210 op = AND;
 
-reg [7:0] cntr;
-initial cntr = 0;
-always @ (posedge clk)
-begin
-    if(init == 1)
-    begin
-        cntr <= cntr + 1;
-        
-        if(cntr == 128)
-            cin <= ~cin;
-            
-        if(cntr == 255)
-            op <= op + 1;
-            
-        if(cntr[6] == 1'b1)
-        begin
-            a_addr <= b_addr;
-            b_addr <= a_addr; 
-        end
-        
-    end
-end
+initial #220 a_addr = 1;
+initial #220 const = 8'h2E;
+initial #240 const = 8'hAA;
+initial #240 a_addr = 0;
+initial #250 op = OR;
+
+initial #260 a_addr = 1;
+initial #260 const = 8'h2E;
+initial #280 const = 8'hAA;
+initial #280 a_addr = 0;
+initial #290 op = XOR;
+
+initial #300 a_addr = 1;
+initial #300 const = 8'h2E;
+initial #320 const = 8'hAA;
+initial #320 a_addr = 0;
+initial #330 op = RRC;
+
+initial #340 a_addr = 1;
+initial #340 const = 8'h2E;
+initial #360 const = 8'hAA;
+initial #360 a_addr = 0;
+initial #370 op = CMP;
+
+initial #380 a_addr = 1;
+initial #380 const = 8'h2E;
+initial #400 const = 8'hAA;
+initial #400 a_addr = 0;
+initial #410 op = ADD;
+
+initial #420 a_addr = 1;
+initial #420 const = 8'h2E;
+initial #440 const = 8'hAA;
+initial #440 a_addr = 0;
+initial #450 op = SUB;
 
 endmodule

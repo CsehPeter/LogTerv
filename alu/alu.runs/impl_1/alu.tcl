@@ -42,11 +42,8 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 
 start_step init_design
 set ACTIVE_STEP init_design
@@ -59,6 +56,7 @@ set rc [catch {
   set_property ip_output_repo D:/Craft/Vivado/alu/alu.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   add_files -quiet D:/Craft/Vivado/alu/alu.runs/synth_1/alu.dcp
+  read_xdc D:/Craft/Vivado/alu/alu.srcs/constrs_2/new/cons.xdc
   link_design -top alu -part xc7a35tcsg324-2
   write_hwdef -file alu.hwdef
   close_msg_db -file init_design.pb

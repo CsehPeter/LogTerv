@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-| Date         : Sat May 06 01:50:53 2017
+| Date         : Thu May 18 22:55:59 2017
 | Host         : DESKTOP-P4DAKPQ running 64-bit major release  (build 9200)
 | Command      : report_utilization -file alu_utilization_synth.rpt -pb alu_utilization_synth.pb
 | Design       : alu
@@ -150,13 +150,13 @@ Table of Contents
 +----------+------+---------------------+
 | IBUF     |   20 |                  IO |
 | RAMD32   |   16 |  Distributed Memory |
-| LUT5     |   13 |                 LUT |
 | OBUF     |   12 |                  IO |
+| LUT5     |   12 |                 LUT |
 | FDRE     |   12 |        Flop & Latch |
 | LUT6     |   10 |                 LUT |
 | LUT3     |   10 |                 LUT |
+| LUT4     |    9 |                 LUT |
 | MUXF7    |    8 |               MuxFx |
-| LUT4     |    8 |                 LUT |
 | CARRY4   |    3 |          CarryLogic |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+
